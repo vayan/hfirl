@@ -7,7 +7,7 @@
 ## Login   <espane_f@epitech.net>
 ## 
 ## Started on  Wed Nov 23 12:56:22 2011 florent espanet
-## Last update Wed Nov 23 14:32:13 2011 florent espanet
+## Last update Wed Nov 23 14:38:31 2011 yann vaillant
 ##
 
 import sqlite3
