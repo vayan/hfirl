@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Ajouter un hf{% endblock %} 
+
+{% block content %}
+<h1> Ajouter un hf </h1>
+<div class="addhf">
+  <form action="{{ url_for('add_hf') }}" method="POST">
+    <label for="hfname">Titre :</label><input type="text" name="hfname" id="hfname" /><br />
+    <label for="hftext">Description :</label><textarea name="hftext" id="hftext"></textarea><br />
+    <label for="hfsend"></label><input type="submit" id="hfsend" /><br />
+</div>
+</form>
+
+{% endblock %}
