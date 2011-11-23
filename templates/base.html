@@ -1,0 +1,28 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  {% block head %}
+  <link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+  <title>{% block title %}{% endblock %}</title>
+  {% endblock %}
+</head>
+<body>
+  <div id="wrap">
+    <div id="header">{% block header %}{% endblock %} FIRL </div>
+    <div id="sidebar">
+      {% block sidebar %}
+      * test <br />
+      * test <br />
+      * test <br />
+      * test <br />
+      {% endblock %}
+    </div> 
+    <div id="content">{% block content %}{% endblock %}</div>    
+    <div id="footer">
+      {% block footer %}
+      &copy; Copyright 1991 - 2011.
+      {% endblock %}
+    </div>
+  </div>
+</body>

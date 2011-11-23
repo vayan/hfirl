@@ -1,0 +1,97 @@
+/*
+** style.css for  in /home/vayan/hfirl
+** 
+** Made by yann vaillant
+** Login   <vailla_y@epitech.net>
+** 
+** Started on  Wed Nov 23 13:21:37 2011 yann vaillant
+** Last update Wed Nov 23 13:42:58 2011 yann vaillant
+*/
+
+/*
+**GLOBAL
+*/
+
+body 
+{
+   font-family: Arial, Times;
+}
+
+#wrap 
+{
+  width: 900px;
+  margin:  0 auto 0 auto;
+}
+
+#header 
+{
+    background-color: orange;
+    padding: 5px;
+    border: 1px solid blue;
+    width: 888px;
+    height: 100px;
+}
+
+#sidebar 
+{
+    padding: 5px;
+    background-color: green;
+    width: 200px;
+    float: right;
+}
+
+#content 
+{
+    background-color: lightgrey;
+    padding: 5px;
+    width: 680px;
+    float: left;
+}
+
+#footer 
+{
+    padding: 2px;
+    color: white;
+    background-color: black;
+    font-size: 0.6em;
+    float: left;
+    width: 896px;
+    height: 10px;
+}
+
+/*
+**HEADER
+*/
+
+
+
+/*
+**SIDEBAR
+*/
+
+
+
+/*
+**CONTENT
+*/
+
+#content .addhf 
+{
+    width : 400px;
+}
+
+#content .addhf ul 
+{
+    list-style: none;
+}
+
+#content .addhf input 
+{
+    float : right;
+    list-style: none;
+}
+
+/*
+**FOOTER
+*/
+
