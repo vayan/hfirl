@@ -7,7 +7,7 @@
 ## Login   <espane_f@epitech.net>
 ## 
 ## Started on  Wed Nov 23 12:56:22 2011 florent espanet
-## Last update Wed Nov 23 14:32:13 2011 florent espanet
+## Last update Wed Nov 23 14:39:15 2011 florent espanet
 ##
 
 import sqlite3
@@ -39,10 +39,3 @@ g.db = connect_db()
 @app.teardown_request
 def teardown_request(exception):
 g.db.close()
-
-@app.route(’/users’)
-def show_users():
-    cur = g.db.execute(’select pseudo, rank from user order by id desc’)
-    users = [dict(title=row[0], text=row[1]) for row in cur.fetchall()]
-    return render_template('show_users.html', users=users)
-
