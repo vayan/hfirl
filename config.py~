@@ -1,0 +1,17 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+##
+## config.py for firl in /home/volent/dev/hfirl
+## 
+## Made by florent espanet
+## Login   <espane_f@epitech.net>
+## 
+## Started on  Wed Nov 23 13:34:20 2011 florent espanet
+## Last update Wed Nov 23 13:38:07 2011 florent espanet
+##
+
+DATABASE = 'db/firl.sqlite'
+DEBUG = True
+SECRET_KEY = 'we luvz python'
+USERNAME = 'admin'
+PASSWORD = 'admin'
