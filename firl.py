@@ -6,7 +6,7 @@
 ## Login   <vailla_y@epitech.net>
 ##
 ## Started on  Wed Nov 23 14:44:56 2011 yann vaillant
-## Last update Wed Nov 23 16:25:36 2011 yann vaillant
+## Last update Fri Nov 25 13:36:15 2011 yann vaillant
 ##
 
 import sqlite3
@@ -54,17 +54,16 @@ def add_hf():
 @app.route('/users')
 def show_users():
     cur = g.db.execute('SELECT pseudo, rank FROM user ORDER BY id DESC')
-    users = [dict(title=row[0], text=row[1]) for row in cur.fetchall()]
+    users = [dict(pseudo=row[0], rank=row[1]) for row in cur.fetchall()]
     return render_template('show_users.html', users=users)
 
 @app.route('/add-user', methods=['POST'])
 def add_user():
     if request.method == 'POST':
-        g.db.execute('INSERT INTO user (pseudo, password, mail, avatar, rank, last_online) \
-VALUES (?, ?, ?, " ", 1, ?)', \
-                         [request.form['usrname'], request.form['usrpass'], request.form['usrmail'],\
-                              int(time.time())])
-        g.db.commit()
+        g.db.execute(' \
+INSERT INTO user (pseudo, password, mail, avatar, rank, last_online) VALUES (?, ?, ?, " ", 1, ?)',\
+[request.form['usrname'], request.form['usrpass'], request.form['usrmail'], int(time.time())])
+    g.db.commit()
     return redirect(url_for('register'))
 
 @app.route('/inscription')
