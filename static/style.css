@@ -5,7 +5,7 @@
 ** Login   <vailla_y@epitech.net>
 ** 
 ** Started on  Wed Nov 23 13:21:37 2011 yann vaillant
-** Last update Wed Nov 23 13:52:08 2011 yann vaillant
+** Last update Fri Nov 25 19:10:37 2011 yann vaillant
 */
 
 /*
@@ -75,6 +75,27 @@ textarea
 */
 
 
+#sidebar .connexion input
+{
+    width: 100px;
+    float: right;
+}
+
+#sidebar .connexion 
+{
+    font-size: 1em;
+}
+
+#sidebar label
+{
+    display: block;
+    float: left;
+}
+
+#sidebar .connexion .submit 
+{
+    width: 190px;
+}
 
 /*
 **CONTENT

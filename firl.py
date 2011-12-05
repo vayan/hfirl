@@ -6,11 +6,12 @@
 ## Login   <vailla_y@epitech.net>
 ##
 ## Started on  Wed Nov 23 14:44:56 2011 yann vaillant
-## Last update Fri Nov 25 13:36:15 2011 yann vaillant
+## Last update Fri Nov 25 19:48:44 2011 yann vaillant
 ##
 
 import sqlite3
 import time
+import hashlib
 from contextlib import closing
 from flask import Flask, request, session, g, redirect, url_for, \
 abort, render_template, flash
@@ -31,13 +32,30 @@ def init_db():
 @app.before_request
 def before_request():
     g.db = connect_db()
+
 @app.teardown_request
 def teardown_request(exception):
     g.db.close()
 
 @app.route('/')
-def header():
+def home():
     return render_template('index.html')
+
+@app.route('/login', methods=['POST'])
+def login():
+    if request.method == 'POST':
+        mdp = hashlib.sha512(hashlib.md5(request.form['copass']).hexdigest()).hexdigest()
+        cur = g.db.execute('SELECT * FROM user WHERE pseudo = ? AND password = ?', \
+                               [request.form['copseudo'], mdp])
+        data_user = [dict(pseudo=row[1], mail=row[2]) for row in cur.fetchall()]
+        
+        session['username'] = request.form['copseudo']
+    return redirect(url_for('home'))
+
+@app.route('/logout', methods=['POST', 'GET'])
+def logout():
+    session.pop('username', None)
+    return redirect(url_for('home'))
 
 @app.route('/ajouter-un-haut-fait')
 def submit():
@@ -60,9 +78,10 @@ def show_users():
 @app.route('/add-user', methods=['POST'])
 def add_user():
     if request.method == 'POST':
+        mdp = hashlib.sha512(hashlib.md5(request.form['usrpass']).hexdigest()).hexdigest()
         g.db.execute(' \
 INSERT INTO user (pseudo, password, mail, avatar, rank, last_online) VALUES (?, ?, ?, " ", 1, ?)',\
-[request.form['usrname'], request.form['usrpass'], request.form['usrmail'], int(time.time())])
+[request.form['usrname'], mdp, request.form['usrmail'], int(time.time())])
     g.db.commit()
     return redirect(url_for('register'))
 
