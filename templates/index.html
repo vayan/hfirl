@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <p >
+      <a href="{{ url_for('submit') }}">Add hf</a> <br />
+      <a href="{{ url_for('register') }}">Add user</a> <br />
+       <a href="{{ url_for('show_users') }}">show user</a>
+    </p>
+{% endblock %}
