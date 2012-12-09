@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+  <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+  <div id="wrap">
+    <div id="header">
+      {% block header %}{% endblock %}
+      <a href="{{ url_for('index') }}">FIRL</a>
+    </div>
+
+    <div id="sidebar">
+      * test <br>
+      * test <br>
+      * test <br>
+      * test <br>
+      <div class="connexion">
+	{% if session['username'] %}
+	  <p>
+	    Salut {{ session['username'] }}
+	    <input type="button" onclick="location.href='{{url_for('index')}}?logout=True'" value="deconnexion" />
+	  </p>
+	{% else %}
+	  <h1> Connexion </h1>
+	  <form action="" method="post" name="login">
+	    <label for="username">Pseudo :</label>{{form.username(placeholder="Username", size=15, id="username")}}<br>
+	    <label for="password">Password :</label>{{form.password(placeholder="Password", size=15, id="password")}}<br>
+	    <input type="submit" value="Connect">
+	  </form>
+	{% endif %}
+      </div>
+    </div> 
+    <div id="content">{% block content %}{% endblock %}</div>    
+    <div id="footer">
+      {% block footer %}
+      &copy; Copyright vayan 1991 - 2011.
+      {% endblock %}
+    </div>
+  </div>
+</body>
