@@ -23,9 +23,9 @@ def login():
         username = form.username.data
         password = form.password.data
         user = user_can_login(username, password)
-        print user
         if user:
             login_user(user, remember = True)
+            flash('Login successfull.')
             return redirect(url_for('index'))
     return render_template(
         'login.html',
