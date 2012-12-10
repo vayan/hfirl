@@ -35,11 +35,10 @@
 {% endblock %}
 
 {% block content %}
-<form class="form-signin" action="" method="post" name="register">
-  <h2 class="form-signin-heading">Please register</h2>
+<form action="" class="form-signin" method="post" name="login">
+  <h2 class="form-signin-heading">Please login</h2>
   {{form.username(class="input-block-level", placeholder="Username", id="username")}}
-  {{form.email(class="input-block-level", placeholder="Email", id="email")}}
   {{form.password(class="input-block-level", placeholder="Password", id="password")}}
-  <button class="btn btn-large btn-primary" type="submit">Register</button>
+  <button class="btn btn-large btn-primary" type="submit">Login</button>
 </form>
 {% endblock %}

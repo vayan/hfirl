@@ -1,5 +1,5 @@
 from app import app, db, models
-from flask import render_template, flash, redirect, request, session, url_for
+from flask import render_template, flash, redirect, request, session, url_for, g
 from forms import RegisterForm
 import re
 
@@ -43,6 +43,9 @@ def add_user(username, password, email):
 
 @app.route('/register', methods = ['GET', 'POST'])
 def register():
+    if g.user.is_authenticated():
+        return redirect(url_for('index'))
+    title = "Register"
     form = RegisterForm()
     if form.validate_on_submit():
         username = form.username.data
@@ -54,4 +57,5 @@ def register():
             return redirect(url_for('register'))
     return render_template(
         'register.html',
+        title = title,
         form = form)
