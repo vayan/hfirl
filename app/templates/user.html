@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Profile page of {{user.username}}</h2>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Username</th>
+      <th>Email</th>
+      <th>Date Signup</th>
+      <th>Last Connection</th>
+      </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{user.id}}</td>
+      <td>{{user.username}}</td>
+      <td>{{user.email}}</td>
+      <td>{{user.date_signup}}</td>
+      <td>{{user.date_online}}</td>
+    </tr>
+  </tbody>
+</table>
+{% endblock %}
