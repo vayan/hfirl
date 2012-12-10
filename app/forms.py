@@ -1,8 +1,8 @@
 from flask.ext.wtf import Form, TextField, Required, PasswordField, SelectField, FileField, TextAreaField
 
 class LoginForm(Form):
-    username = TextField('username', validators = [Required()])
-    password = PasswordField('password', validators = [Required()])
+    username = TextField('username')
+    password = PasswordField('password')
 
 class RegisterForm(Form):
     username = TextField('username', validators = [Required()])

@@ -2,6 +2,7 @@ from app import app, db, models
 from flask import render_template, flash, redirect, request, session, url_for, g
 from forms import RegisterForm
 import re
+from datetime import datetime
 
 def valid_email(email):
     result = re.match("^[a-zA-Z0-9._%-+]+@[a-zA-Z0-9._%-]+.[a-zA-Z]{2,6}$", email)
@@ -35,10 +36,11 @@ def add_user(username, password, email):
         return False
     if not valid_password(password):
         return False
-    user = models.User(username = username, password = password, email = email)
+    date_now = datetime.now().date()
+    user = models.User(username = username, password = password, email = email, date_signup = date_now)
     db.session.add(user)
     db.session.commit()
-    flash('Signing in successfull !' % user)
+    flash('Sign up successfull !' % user)
     return True
 
 @app.route('/register', methods = ['GET', 'POST'])

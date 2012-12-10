@@ -17,7 +17,7 @@ class User(db.Model):
     name = db.Column(db.String(128))
     first_name = db.Column(db.String(128))
     rank = db.Column(db.Integer)
-    date_sigin = db.Column(db.Date)
+    date_signup = db.Column(db.Date)
     date_online = db.Column(db.Date)
 
     def is_authenticated(self):

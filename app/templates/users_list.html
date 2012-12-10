@@ -1,9 +1,28 @@
 {% extends "base.html" %}
 
 {% block content %}
-<ul>
-  {% for user in users %}
-  <li>{{user.username}} - {{user.email}}</li>
+<h2>List of all the donethat users</h2>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Username</th>
+      <th>Email</th>
+      <th>Date Signup</th>
+      <th>Last Connection</th>
+      </tr>
+  </thead>
+  <tbody>
+    {% for user in users %}
+    <tr>
+      <td>{{user.id}}</td>
+      <td>{{user.username}}</td>
+      <td>{{user.email}}</td>
+      <td>{{user.date_signup}}</td>
+      <td>{{user.date_online}}</td>
+    </tr>
   {% endfor %}
-</ul>
+  </tbody>
+</table>
 {% endblock %}
