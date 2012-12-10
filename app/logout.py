@@ -10,4 +10,5 @@ def logout():
     user.date_online = date_now
     db.session.commit()
     logout_user()
+    flash('Logout successfull')
     return redirect(url_for('index'))
