@@ -1,0 +1,133 @@
+#!/bin/sh
+
+project="donethat"
+
+success(){
+  printf "✓\n"
+}
+
+error(){
+  printf "✘\n"
+}
+
+echo "Starting the install script"
+
+git clone http://git.vayan.fr/hfirl.git $project
+if [ $? -eq 0 ]; then
+    echo "Cloned the project with success."
+else
+    echo "Fatal Error : Unable to clone the project"
+    exit 1
+fi
+
+echo -n "Moving in project directory .....................  "
+cd $project
+if [ $? -eq 0 ]; then
+    success
+else
+    error
+    echo "Fatal Error : Unable to move to $project directory"
+    exit 1
+fi
+
+echo -n "Downloading virtualenv.py  .....................  "
+wget -q https://raw.github.com/pypa/virtualenv/master/virtualenv.py
+if [ $?	-eq 0 ]; then
+    success
+else
+    error
+    echo "Fatal Error : Unable to download virtualenv.py"
+    exit 1
+fi
+
+echo -n "Creating donethat virtualenv  ..................  "
+python virtualenv.py -q $project
+if [ $? -eq 0 ]; then
+    success
+else
+    error
+    echo "Fatal Error : Unable to create donethat virtualenv"
+    exit 1
+fi
+
+echo -n "Installing dependencies (flask)  ...............  "
+$project/bin/pip -q install flask
+if [ $? -eq 0 ]; then
+    success
+else
+    error
+    echo "Fatal Error : Unable to install dependencies"
+    exit 1
+fi
+
+echo -n "Installing dependencies (flask-login)  .........  "
+$project/bin/pip -q install flask-login
+if [ $? -eq 0 ]; then
+    success
+else
+    error
+    echo "Fatal Error : Unable to install dependencies"
+    exit 1
+fi
+
+echo -n "Installing dependencies (flask-sqlalchemy)  ....  "
+$project/bin/pip -q install flask-sqlalchemy
+if [ $? -eq 0 ]; then
+    success
+else
+    error
+    echo "Fatal Error : Unable to install dependencies"
+    exit 1
+fi
+
+echo -n "Installing dependencies (sqlalchemy-migrate)  ..  "
+$project/bin/pip -q install sqlalchemy-migrate
+if [ $? -eq 0 ]; then
+    success
+else
+    error
+    echo "Fatal Error : Unable to install dependencies"
+    exit 1
+fi
+
+echo -n "Installing dependencies (flask-whooshalchemy)  .  "
+$project/bin/pip -q install flask-whooshalchemy
+if [ $? -eq 0 ]; then
+    success
+else
+    error
+    echo "Fatal Error : Unable to install dependencies"
+    exit 1
+fi
+
+echo -n "Installing dependencies (flask-wtf)  ...........  "
+$project/bin/pip -q install flask-wtf
+if [ $? -eq 0 ]; then
+    success
+else
+    error
+    echo "Fatal Error : Unable to install dependencies"
+    exit 1
+fi
+
+echo -n "Installing dependencies (flask-babel)  .........  "
+$project/bin/pip -q install flask-babel
+if [ $? -eq 0 ]; then
+    success
+else
+    error
+    echo "Fatal Error : Unable to install dependencies"
+    exit 1
+fi
+
+echo -n "Installing dependencies (flup)  ................  "
+$project/bin/pip -q install flup
+if [ $? -eq 0 ]; then
+    success
+else
+    error
+    echo "Fatal Error : Unable to install dependencies"
+    exit 1
+fi
+
+echo "Wouhou, you can now launch donethat with ./run.py"
