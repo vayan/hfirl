@@ -20,7 +20,7 @@ else
     exit 1
 fi
 
-echo -n "Moving in project directory .....................  "
+echo -n "Moving in project directory ....................  "
 cd $project
 if [ $? -eq 0 ]; then
     success
@@ -127,6 +127,26 @@ if [ $? -eq 0 ]; then
 else
     error
     echo "Fatal Error : Unable to install dependencies"
+    exit 1
+fi
+
+echo -n "Changing headers  ..............................  "
+sed -i "s/#\!.*$/#\!$project\/bin\/python/" db_*.py run.py
+if [ $? -eq 0 ]; then
+    success
+else
+    error
+    echo "Fatal Error : Unable to change headers"
+    exit 1
+fi
+
+echo -n "Creating database  .............................  "
+$project/bin/python db_create.py
+if [ $? -eq 0 ]; then
+    success
+else
+    error
+    echo "Fatal Error : Unable to create database"
     exit 1
 fi
 
