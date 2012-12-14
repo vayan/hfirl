@@ -12,12 +12,19 @@ error(){
 
 echo "Starting the install script"
 
-git clone http://git.vayan.fr/hfirl.git $project
+git clone git@git.vayan.fr:hfirl.git $project
 if [ $? -eq 0 ]; then
     echo "Cloned the project with success."
 else
-    echo "Fatal Error : Unable to clone the project"
-    exit 1
+    echo "Error : Unable to clone the project using ssh"
+    echo "Trying to clone the project using http"
+    git clone http://git.vayan.fr/hfirl.git $project
+    if [ $? -eq 0 ]; then
+	echo "Cloned the project with success."
+    else
+	echo "Fatal Error: Unable to clone the project."
+	exit 1
+    fi
 fi
 
 echo -n "Moving in project directory ....................  "
