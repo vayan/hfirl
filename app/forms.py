@@ -13,6 +13,5 @@ class AchievementForm(Form):
     name = TextField('name', validators = [Required()])
     category = SelectField('category', coerce=int)
     description = TextAreaField('description', validators = [Required()])
-    image = FileField('image')
     
 

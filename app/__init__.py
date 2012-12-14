@@ -10,4 +10,5 @@ lm = LoginManager()
 lm.init_app(app)
 lm.login_view = 'index'
 
-from app import index, register, login, logout, users_list, user, 404
+from app import index, register, login, logout, users_list, user, error404
+from app import create_achievement

@@ -37,7 +37,7 @@ class User(db.Model):
 
 class Achievement(db.Model):
     id = db.Column(db.Integer, primary_key = True)
-    name = db.Column(db.String(128), index = True, unique = True)
+    name = db.Column(db.String(128), index = True)
     category = db.Column(db.Integer)
     image = db.Column(db.String(128))
     description = db.Column(db.String(512))
