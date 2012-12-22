@@ -3,5 +3,6 @@
 *.pyo
 flask/
 db_repository/
+.idea/
 app.db
 virtualenv.py
